@@ -643,6 +643,44 @@ body {
     100% { transform: scale(1.6); opacity: 0; }
 }
 
+.centered-details {
+    display: flex;
+    flex-direction: column; /* Элементы друг под другом */
+    align-items: center;    /* Центровка по горизонтали */
+    justify-content: center;
+    text-align: center;
+    gap: 15px;              /* Расстояние между блоками */
+    margin: 30px auto;
+}
+
+
+.detail-item i {
+    font-size: 1.8rem;      /* Размер иконок */
+    color: #d4af37;         /* Золотистый цвет */
+    margin-bottom: 5px;
+}
+
+.detail-text span {
+    display: block;         /* Надпись на одной строке */
+    font-size: 0.9rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-text strong {
+    display: block;         /* Время на другой строке */
+    font-size: 1.5rem;
+    color: #4a5d4e;
+    font-weight: 700;
+}
+
+.detail-divider {
+    color: #d4af37;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    margin: 5px 0;
+}
 /* Добавляем тень для карточек с инфо */
 .detail-item {
     display: flex;
@@ -663,19 +701,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Эффект при нажатии, чтобы тень становилась чуть меньше (как будто нажали на кнопку) */
-.detail-item:active {
-    transform: translateY(2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
 
-/* Если хочешь, чтобы тень была еще и у разделителя-звездочки */
-.detail-divider {
-    font-size: 1.5rem;
-    color: #d4af37;
-    margin: 10px 0;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для текста/символов */
-}
 
 /* --- 5. АНИМАЦИЯ ПОЯВЛЕНИЯ (Fade-In) --- */
 .animate-on-scroll {
@@ -925,6 +951,88 @@ body {
     padding: 2px;
 }
 
+/* --- НОВЫЙ ТАЙМЛАЙН (КАК НА ФОТО) --- */
+.timeline-section {
+    padding: 60px 20px;
+    background-color: #fdfcf9; /* Твой основной фон */
+    text-align: center;
+}
+
+.timeline-container {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Расстояние между блоками */
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили для иконок-картинок */
+.timeline-icon {
+    width: 60px; /* Размер иконок (на фото они крупные) */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.timeline-icon img {
+    width: 120%;
+    height: auto;
+    display: block;
+    /* Если иконки черные, делаем их очень темно-серыми для мягкости */
+    opacity: 0.9; 
+}
+
+/* Стили для текста (Контент) */
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Время: тонкое, крупное */
+.timeline-time {
+    font-family: 'Playfair Display', serif; /* Используй тонкий сериф шрифт */
+    font-size: 1.8rem;
+    color: #444; /* Мягкий черный */
+    font-weight: 300; /* Тонкое начертание */
+    margin-bottom: 5px;
+}
+
+/* Текст описания: капсом, мелкий */
+.timeline-text {
+    font-family: 'Montserrat', sans-serif; /* Твой основной шрифт */
+    font-size: 0.85rem;
+    color: #777; /* Серый цвет */
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Разрядка */
+    margin: 0;
+}
+
+/* Красивая звёздочка-разделитель в конце */
+.timeline-star-divider {
+    color: #b59410; /* Золотистый цвет */
+    font-size: 1.5rem;
+    margin-top: 20px;
+    opacity: 0.6;
+}
+
+/* Адаптация для мобильных: иконки чуть меньше */
+@media (max-width: 480px) {
+    .timeline-icon {
+        width: 50px;
+    }
+    .timeline-time {
+        font-size: 1.6rem;
+    }
+}
+
 /* --- ФУТЕР (FOOTER) --- */
 .site-footer {
     background-color: #000000; /* Фулл черный */
@@ -981,7 +1089,7 @@ body {
 .btn-back-to-top:hover {
     background-color: #7b4c4c;
     color: #000;
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 5px 20px rgba(212, 55, 55, 0.4);
 }
 
 .copyright {
