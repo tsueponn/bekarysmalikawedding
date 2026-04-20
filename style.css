@@ -1,0 +1,1031 @@
+/* --- 1. БАЗОВЫЕ НАСТРОЙКИ --- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #fdfcf9;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: 'adine';
+    src: url('adinekirnberg.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* --- СТИЛИ ЛОГОТИПА В МЕНЮ --- */
+
+.offcanvas-body .nav-link {
+    font-size: 1.2rem; /* Увеличили размер шрифта */
+    font-weight: 500;   /* Сделали чуть жирнее */
+    padding: 15px 0;    /* Добавили отступы между ссылками */
+    color: #333 !important;
+    letter-spacing: 1px; /* Добавили "воздуха" между буквами */
+    transition: 0.3s;
+}
+
+.offcanvas-body .nav-link:active {
+    color: #d4af37 !important; /* Цвет при нажатии */
+}
+
+#desktop-blocker {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #fdfcf9; /* Твой основной кремовый фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+/* Декоративные размытые круги на фоне для глубины */
+.blocker-bg-dots {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 90% 90%, rgba(107, 76, 76, 0.05) 0%, transparent 30%);
+}
+
+.blocker-content {
+    text-align: center;
+    padding: 40px;
+    z-index: 10;
+}
+
+.invitation-text-section {
+    padding: 80px 20px;
+    background-color: #fdfcf9; /* Твой основной фон */
+    text-align: center;
+}
+
+.text-container {
+    max-width: 650px; /* Оптимальная ширина для рамки */
+    margin: 0 auto;
+    position: relative;
+}
+
+/* --- ВЕРХНИЙ И НИЖНИЙ ОРНАМЕНТЫ (PNG КАРТИНКИ) --- */
+.top-ornament, .bottom-ornament {
+    margin: 0 auto;
+    width: 360px; /* Размер декоративных элементов */
+    opacity: 0.8;
+}
+
+.top-ornament { margin-bottom: 20px; }
+.bottom-ornament { margin-top: 30px; }
+
+.decor-img {
+    width: 100%;
+    height: auto;
+    /* Если картинки черные, делаем их золотыми через фильтр */
+    filter: sepia(100%) saturate(300%) hue-rotate(5deg) brightness(95%); 
+}
+
+/* --- ДЕКОРАТИВНАЯ РАМКА --- */
+.invitation-frame {
+    border: 2px solid #d4af37; /* Золотистая рамка */
+    border-radius: 15px; /* Слегка скругляем углы */
+    padding: 40px 30px; /* Отступы внутри рамки */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Мягкая тень для объема */
+    background: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон внутри */
+}
+
+/* --- ЗАГОЛОВОК И ТЕКСТ ВНУТРИ РАМКИ --- */
+.invitation-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem; /* Сделали заголовок чуть крупнее */
+    color: #4a5d4e;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.main-invitation {
+    font-size: 1.2rem !important;
+    line-height: 1.8 !important;
+    color: #555;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+
+
+/* Убираем старый divider ❦, если он мешает */
+.divider-ornament { display: none; }
+
+/* Для мобильных устройств: делаем рамку чуть тоньше */
+@media (max-width: 480px) {
+    .invitation-frame {
+        padding: 30px 15px;
+        border-width: 1px;
+    }
+    .invitation-header {
+        font-size: 1.2rem;
+    }
+}
+
+.greeting-text {
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif; /* Красивый шрифт с засечками */
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.main-invitation {
+    /* Увеличиваем размер (стандарт обычно 1rem, мы ставим 1.3rem) */
+    font-size: 1.3rem !important; 
+    
+    /* Добавляем межстрочный интервал, чтобы текст "дышал" и легко читался */
+    line-height: 1.8 !important; 
+    
+    /* Делаем текст чуть более насыщенным, но не жирным */
+    font-weight: 400; 
+    
+    /* Центрируем и добавляем небольшие отступы по бокам */
+    text-align: center;
+    max-width: 90%;
+    margin: 20px auto !important;
+    
+    /* Цвет — мягкий серый или темно-зеленый (как у тебя был) */
+    color: #555; 
+}
+
+/* Если хочешь, чтобы на мобилках текст был чуть поменьше, а на планшетах побольше */
+@media (max-width: 480px) {
+    .main-invitation {
+        font-size: 1.45rem !important;
+    }
+}
+
+.divider-ornament {
+    font-size: 24px;
+    color: #d4af37; /* Золотистый оттенок */
+    margin: 20px 0;
+}
+
+.wedding-day-title {
+    font-family: 'Great Vibes', cursive; /* Рукописный шрифт */
+    font-size: 3rem;
+    color: #536858;
+    margin-top: 10px;
+}
+
+
+.parents-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fdfcf9; /* Твой основной фон */
+}
+
+.parents-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Заголовок "Той иелері" */
+.parents-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #6c6c6c; /* Неброский серый цвет */
+    margin-bottom: 15px;
+}
+
+/* Имена родителей */
+.parents-names {
+    font-family: 'adine', serif; /* Используем твой красивый шрифт */
+    font-size: clamp(4.2rem, 8vw, 4rem); /* Адаптивный размер */
+    color: #4a5d4e; /* Твой фирменный зеленый */
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Декоративная линия под именами (опционально) */
+.parents-names::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 1px;
+    background-color: #d4af37; /* Золотистая линия */
+    margin: 20px auto 0;
+}
+
+/* ТЕЛЕФОН: Маленький и анимированный */
+.phone-wrapper {
+    position: relative;
+    width: 80px; /* Сделали маленьким */
+    margin: 0 auto 30px;
+}
+
+.phone-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
+    animation: phoneFloat 3s ease-in-out infinite; /* Плавное качание */
+}
+
+.phone-glow {
+    position: absolute;
+    bottom: -10px; left: 50%;
+    transform: translateX(-50%);
+    width: 40px; height: 10px;
+    background: rgba(0,0,0,0.05);
+    filter: blur(5px);
+    border-radius: 50%;
+    animation: shadowScale 3s ease-in-out infinite;
+}
+
+/* ТЕКСТ: Эстетика и шрифты */
+#desktop-blocker h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #536858;
+    margin-bottom: 15px;
+}
+
+#desktop-blocker p {
+    color: #5e5959;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+#desktop-blocker p span {
+    color: #a43636; /* Акцентный цвет */
+    font-weight: 600;
+}
+
+/* АНИМАЦИИ */
+@keyframes phoneFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes shadowScale {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.3; }
+    50% { transform: translateX(-50%) scale(1.5); opacity: 0.1; }
+}
+
+/* Мини-индикатор внизу */
+.scroll-indicator-mini {
+    margin-top: 40px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ccc;
+    animation: fadePulse 2s infinite;
+}
+
+@keyframes fadePulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+/* Центрируем обертку */
+.menu-photo-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px; /* Отступ от текста меню */
+    margin-bottom: 20px; /* Отступ от нижнего края */
+}
+
+/* Сам контейнер для лого */
+.menu-photo-container {
+    /* ЗАДАЕМ РАЗМЕР (то, что ты просил) */
+    width: 160px; /* Оптимальный размер для мобильного меню */
+    height: 160px;
+    
+    /* Делаем его круглым и эстетичным */
+    border-radius: 50%;
+    
+    /* Золотистая нежная рамка */
+    border: 2px solid #d4af37; 
+    
+    /* Эффект "облака" или свечения */
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+    
+    /* Белый фон под лого (если лого PNG) */
+    background-color: #fff;
+    
+    /* Внутренний отступ */
+    padding: 10px;
+    
+    /* Чтобы ничего не вылазило за рамки */
+    overflow: hidden; 
+    
+    /* Центрируем саму картинку внутри */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Сама картинка логотипа */
+.menu-logo-img {
+    width: 100%;
+    height: 100%;
+    /* Чтобы логотип не растягивался, а сохранял пропорции */
+    object-fit: contain; 
+}
+
+/* --- 2. ГЕРОЙ-БЛОК (ГЛАВНАЯ) --- */
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') no-repeat center center/cover;
+    color: white;
+    padding-top: 25vh; 
+    position: relative;
+}
+
+.btn-music-hero {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 45px;
+    backdrop-filter: blur(5px);
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+.music-playing {
+    animation: pulse-gold 2s infinite;
+    border-color: #d4af37;
+    color: #d4af37;
+}
+
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.hero h2 {
+    font-family: 'adine', serif;
+    font-size: clamp(3.5rem, 12vw, 7rem);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.invitation-text-section h2 {
+    /* 'Alice' шрифті қазақша әріптерді (ә, і, ң т.б.) керемет қолдайды */
+    font-family: 'Alice', serif;
+    
+    /* Текст ұзын болғандықтан, clamp мәнін сәл азайттық */
+    font-size: clamp(1.8rem, 8vw, 3rem); 
+    
+    margin: 0 0 25px 0;
+    line-height: 1.3; /* Әріптер бір-біріне тиіп кетпеуі үшін */
+    color: #4a5d4e;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic; /* Салтанатты түр береді */
+}
+
+.hero-logo-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-logo-img {
+    width: 335px; /* Оптимальный размер для мобилы */
+    height: auto;
+    /* Убираем фон, если он есть на картинке, и делаем лого белым */
+    filter: brightness(0) invert(1); 
+    opacity: 0.9; /* Немного прозрачности для эстетики */
+    transition: all 0.5s ease;
+}
+
+/* Если на логотипе всё же остался лишний фон, 
+   можно добавить mix-blend-mode, он смешает его с фото */
+.logo-white {
+    mix-blend-mode: screen; 
+}
+
+.wedding-day-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #fff; /* Можно оставить белым или сделать нежно-золотым */
+    margin-top: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Егер Cormorant Garamond шрифтін ұнатсаң, оны да қолдануға болады */
+.main-invitation {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* --- 3. СЕКЦИИ С ЦВЕТОЧНЫМ ФОНОМ (Как на фото) --- */
+.decor-section {
+    position: relative;
+    padding: 100px 20px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fdfcf9;
+    overflow: hidden;
+}
+
+/* Накладываем листья сверху и снизу через псевдоэлементы */
+.decor-section::before, .decor-section::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.full-photo-section {
+    width: 100%;
+    /* Мы не ставим фиксированную высоту 100vh, чтобы подстроиться под фото */
+    display: block; 
+    line-height: 0; /* Убираем микро-отступы снизу */
+    background-color: #fdfcf9; /* Цвет фона, который заполнит пустоту, если она будет */
+}
+
+.photo-bg {
+    width: 120%;
+    height: auto; /* Высота будет зависеть от пропорций фото */
+    display: block;
+}
+
+/* Если ты используешь фоновое изображение в div: */
+.photo-container-fit {
+    width: 120%;
+    height: auto;
+    aspect-ratio: 1948 / 3321; /* Твои точные пропорции */
+    background-size: contain;  /* ПОКАЗАТЬ ЦЕЛИКОМ */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.full-width-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Убираем любые ограничения по высоте */
+    max-height: none; 
+    object-fit: contain;
+}
+
+/* На мобилках иногда background-attachment: fixed глючит, 
+   поэтому оставим просто качественный cover */
+@media (max-width: 768px) {
+    .photo-bg {
+        background-attachment: scroll;
+    }
+}
+
+
+/* --- КОНТЕЙНЕР КАЛЕНДАРЯ --- */
+.calendar-container {
+    position: relative;
+    z-index: 5;
+    background-color: #fdfcf9; /* Чистый белый для контраста */
+    padding: 50px 25px; /* Увеличили отступы */
+    border-radius: 30px;
+    box-shadow: 0 80px 80px rgba(0, 0, 0, 0.05); /* Мягкая тень для объема */
+    max-width: 450px; /* Оптимально для мобилок */
+    width: 90%; /* Чтобы не прилипал к краям экрана */
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.2); /* Тонкая золотая рамка */
+}
+
+/* --- ЗАГОЛОВОК --- */
+.calendar-title {
+    font-family: 'adine', serif;
+    font-size: 4rem; /* Сделали еще больше и величественнее */
+    color: #a43636;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+/* Настраиваем тень именно для этого слайдера */
+#restaurantCarousel {
+    /* x-смещение, y-смещение, размытие, растяжение, цвет */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 20px; /* Чтобы тень повторяла закругление углов */
+    transition: transform 0.3s ease; /* Плавность при наведении */
+}
+
+/* Эффект, когда пользователь наводит на карусель (опционально) */
+#restaurantCarousel:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-5px); /* Слегка приподнимается */
+}
+
+.carousel-item img {
+    transition: transform 0.6s ease-in-out;
+}
+
+/* На мобилках делаем высоту чуть меньше, чтобы всё влезло */
+@media (max-width: 480px) {
+    .carousel-inner, .carousel-item img {
+        height: 250px !important;
+    }
+}
+
+/* Красим кнопки управления под золото (опционально) */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(80%) sepia(50%) saturate(400%) hue-rotate(5deg) brightness(90%) contrast(90%);
+}
+
+.calendar-date-display {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 5px; /* Больше воздуха между буквами */
+    text-transform: uppercase;
+    color: #926c6c; /* Золотистый акцент */
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 15px 0;
+    margin-bottom: 35px;
+}
+
+/* --- СЕТКА КАЛЕНДАРЯ --- */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px 5px; /* Расстояние между датами */
+}
+
+.weekday {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #a43636; /* Бордовый цвет для дней недели */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.calendar-grid span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px; /* Увеличили высоту ячейки */
+    font-size: 1.1rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* --- ГЛАВНАЯ ДАТА (15-е ЧИСЛО) --- */
+
+/* Анимированный день 15 */
+.event-day {
+    position: relative;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.event-day::before {
+    content: '15';
+    position: absolute;
+    width: 38px; height: 38px;
+    background-color: #a43636;
+    border-radius: 50%;
+    z-index: -1;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.event-day::after {
+    content: '';
+    position: absolute;
+    width: 38px; height: 38px;
+    border: 2px solid #a43636;
+    border-radius: 50%;
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Добавляем тень для карточек с инфо */
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 320px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 1); /* Делаем фон чисто белым для контраста */
+    border-radius: 20px;
+    
+    /* ТВОЯ ЧЕРНАЯ ТЕНЬ */
+    /* Параметры: смещение по X, по Y, размытие, растяжение, цвет */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+    
+    border-left: 4px solid #a43636; /* Сделаем полоску в цвет кружка календаря */
+    transition: all 0.3s ease;
+}
+
+/* Эффект при нажатии, чтобы тень становилась чуть меньше (как будто нажали на кнопку) */
+.detail-item:active {
+    transform: translateY(2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Если хочешь, чтобы тень была еще и у разделителя-звездочки */
+.detail-divider {
+    font-size: 1.5rem;
+    color: #d4af37;
+    margin: 10px 0;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для текста/символов */
+}
+
+/* --- 5. АНИМАЦИЯ ПОЯВЛЕНИЯ (Fade-In) --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.animate-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 6. МЕНЮ И ПРОЧЕЕ --- */
+.navbar-toggler { border: none !important; }
+
+#desktop-blocker {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #fff; z-index: 10000;
+    justify-content: center; align-items: center; text-align: center;
+}
+
+/* --- ТАЙМЕР ОБРАТНОГО ОТСЧЕТА --- */
+.countdown-container {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+}
+
+.countdown-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #4a5d4e;
+    margin-bottom: 20px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.timer-item {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 10px;
+    border-radius: 15px;
+    min-width: 70px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.timer-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #a43636; /* Цвет в тон кружку в календаре */
+    display: block;
+}
+
+.timer-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+/* Анимация "тиканья" для секунд */
+.timer-item:last-child {
+    animation: pulse-timer 1s infinite;
+}
+
+/* --- ДЕТАЛИ МЕРОПРИЯТИЯ ПОД ТАЙМЕРОМ --- */
+.event-details {
+    margin-top: 50px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    border-left: 3px solid #d4af37; /* Золотой акцент слева */
+    transition: transform 0.3s ease;
+}
+
+.detail-item:hover {
+    transform: translateX(10px); /* Легкий интерактив при клике/наведении */
+}
+
+.detail-item i {
+    font-size: 1.5rem;
+    color: #a43636; /* В тон нашему таймеру и календарю */
+}
+
+.detail-text {
+    text-align: left;
+}
+
+.detail-text span {
+    display: block;
+    font-size: 0.75rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-text strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.detail-divider {
+    font-size: 1.2rem;
+    color: rgba(212, 175, 55, 0.4);
+    margin: 5px 0;
+}
+
+/* Анимация для иконок (чтобы не было скучно) */
+.detail-item i {
+    animation: icon-float 3s ease-in-out infinite;
+}
+
+/* --- СЕКЦИЯ КАРТЫ --- */
+.location-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fdfcf9;
+}
+
+.location-address {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.map-wrapper {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background: #eee;
+    height: 350px;
+    margin: 0 auto 20px;
+    max-width: 500px;
+}
+
+/* Эффект пульсации для всей секции локации, когда она появляется */
+.location-section.active .map-wrapper {
+    animation: map-entry 1.2s ease-out;
+}
+
+@keyframes map-entry {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.btn-2gis {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #a33232;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(100, 181, 52, 0.3);
+    transition: 0.3s;
+}
+
+.btn-2gis:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(100, 181, 52, 0.4);
+    color: white;
+}
+
+.map-placeholder img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: grayscale(0.2);
+}
+
+.map-overlay-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(164, 54, 54, 0.9);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+    white-space: nowrap;
+}
+
+/* КНОПКА 2ГИС (Стиль как ты любишь) */
+.btn-2gis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #804848 0%, #5a3d3d 100%);
+    color: white;
+    padding: 18px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 25px rgba(154, 56, 56, 0.4);
+    transition: all 0.3s ease;
+    animation: bounce-small 2s infinite; /* Постоянное мягкое покачивание */
+}
+
+.btn-2gis:active {
+    transform: scale(0.95);
+}
+
+.btn-2gis img {
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 8px;
+    padding: 2px;
+}
+
+/* --- ФУТЕР (FOOTER) --- */
+.site-footer {
+    background-color: #000000; /* Фулл черный */
+    padding: 60px 20px 30px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.footer-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Логотип в футере (инвертируем в белый) */
+.footer-logo-img {
+    width: 300px;
+    height: auto;
+    filter: brightness(0) invert(1); /* Делаем черное лого белым */
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+/* Имена в футере */
+.footer-names {
+    font-family: 'adine', serif; /* Твой фирменный шрифт */
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.footer-divider {
+    width: 50px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 auto 30px;
+}
+
+/* Кнопка "Вернуться на главную" */
+.btn-back-to-top {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: transparent;
+    border: 1px solid #9a3939; /* Золотая рамка */
+    color: #ad3b3b;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+}
+
+.btn-back-to-top:hover {
+    background-color: #7b4c4c;
+    color: #000;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 0.7rem;
+    opacity: 0.4;
+    letter-spacing: 1px;
+}
+
+/* Плавный скролл (если еще нет) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Анимация для кнопки */
+@keyframes bounce-small {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Анимация появления из твоего старого кода подхватится автоматически */
+
+@keyframes icon-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes pulse-timer {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@media screen and (min-width: 769px) {
+    #desktop-blocker { display: flex; }
+    body { overflow: hidden; }
+}
+
+.scroll-down {
+    position: absolute; bottom: 30px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
