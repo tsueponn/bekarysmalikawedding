@@ -55,6 +55,24 @@ function toggleMusic() {
     }
     isPlaying = !isPlaying;
 }
+// Функция для запуска музыки
+function playWeddingMusic() {
+    const audio = document.getElementById('weddingAudio'); // Проверь, что у твоего <audio> такой id
+    if (audio) {
+        audio.play().then(() => {
+            console.log("Музыка пошла!");
+            // Удаляем обработчик после первого запуска, чтобы музыка не перезапускалась при каждом клике
+            document.removeEventListener('click', playWeddingMusic);
+            document.removeEventListener('touchstart', playWeddingMusic);
+        }).catch(error => {
+            console.log("Браузер всё еще блокирует:", error);
+        });
+    }
+}
+
+// Ждем клика или касания (для телефонов)
+document.addEventListener('click', playWeddingMusic);
+document.addEventListener('touchstart', playWeddingMusic);
 
 /**
  * 3. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (Для календаря и приглашения)
