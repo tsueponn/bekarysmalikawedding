@@ -10,7 +10,7 @@
 <meta property="og:title" content="Бекарыс & Малика: Тойға шақыру">
 <meta property="og:description" content="15.07.2026 — Біздің қуанышты сәтімізге ортақтасуға шақырамыз!">
 
-<meta property="og:image" content="img/OG.png">
+<meta property="og:image" content="https://tsueponn.github.io/bekarysmalikawedding.github.io/img/OG.png">
 
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -31,8 +31,9 @@
 </head>
 <body>
 
-    <audio id="bg-music" loop>
-    <source src="song/Kazybek Kuraiysh - Махаббат деген қандайды.mp3" type="audio/mpeg">
+    <audio id="weddingAudio" loop playsinline preload="auto">
+    <source src="song/123.mp3" type="audio/mpeg">
+    <source src="song/123.mp3" type="audio/ogg">
 </audio>
 
   <div id="desktop-blocker">
@@ -84,9 +85,9 @@
     </nav>
 
     <section id="hero-section" class="hero">
-        <button class="btn-music-hero" type="button" onclick="toggleMusic()">
-            <i id="music-icon" class="bi bi-music-note-beamed"></i>
-        </button>
+        <button class="btn-music-hero" type="button" id="music-btn">
+    <i id="music-icon" class="bi bi-music-note-beamed"></i>
+</button>
 
         <h2>Бекарыс & Малика</h2>
         <p class="date">15 Шілде 2026</p>
